@@ -10,8 +10,8 @@ import (
 
 func Run() {
 	scanner := bufio.NewScanner(os.Stdin) //это используется чтобы построчно читать введённый текст из терминала
-
-	for { // бесконечный цикл/меню
+	_ = todo.LoadTasks()                  //загружаем задачи из json
+	for {                                 // бесконечный цикл/меню
 		fmt.Println()
 		fmt.Println("<<===My ToDo-list===>>")
 		fmt.Println("1. Add task")
@@ -27,7 +27,7 @@ func Run() {
 		switch choice {
 
 		case "1":
-			fmt.Print("Write the task's name")
+			fmt.Println("Write the task's name")
 			if !scanner.Scan() { //опять же если пользователь не ввел ничего то переходим к следующей итеррации цикла. итерация это одно полное прохождение цикла
 				continue
 			}
